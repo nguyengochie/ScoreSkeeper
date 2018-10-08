@@ -8,7 +8,7 @@ const GameModel = require('./models/game.model');
 
 let app = express();
 
-mongoose.connect('mongodb://localhost/scorekeeper', (err) => {
+mongoose.connect('mongodb://admin:hieu123@ds113402.mlab.com:13402/scorekeeperdb', (err) => {
     if(err) console.error(err)
     else console.log("Connect DB success!");
 });
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', apiRouter);
 
-app.listen(6969, (err) => {
+app.listen(process.env.PORT||6969, (err) => {
     if(err) console.log(err)
     else console.log("App is listening!");
 });
